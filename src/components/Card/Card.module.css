@@ -1,0 +1,30 @@
+.figure {
+  width: 282px;
+  background-color: var(--gray);
+  margin: 0;
+}
+
+.cover {
+  width: 282px;
+}
+
+.footer {
+  display: flex;
+  padding: 1em 1.75em;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.footer > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.footer > button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
