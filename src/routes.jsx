@@ -4,42 +4,19 @@ import Favorite from './pages/Favorite';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Container from './components/Container';
-import data from './json/db.json';
-import { useState } from 'react';
+import FavoritesProvider from './context/Favorites';
 
 const AppRoutes = () => {
-  const [videos, setVideos] = useState(data);
-
-  const handleFavorite = (id) => {
-    setVideos(
-      videos.map((currentVideo) => {
-        console.log(!currentVideo.favorite);
-
-        id === currentVideo.id
-          ? (currentVideo.favorite = !currentVideo.favorite)
-          : currentVideo.favorite;
-
-        return currentVideo;
-      }),
-    );
-  };
-
   return (
     <BrowserRouter>
       <Header />
       <Container>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home videos={videos} handleFavorite={handleFavorite} />}
-          />
-          <Route
-            path="/favoritos"
-            element={
-              <Favorite videos={videos} handleFavorite={handleFavorite} />
-            }
-          />
-        </Routes>
+        <FavoritesProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favoritos" element={<Favorite />} />
+          </Routes>
+        </FavoritesProvider>
       </Container>
       <Footer />
     </BrowserRouter>

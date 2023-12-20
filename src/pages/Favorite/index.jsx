@@ -1,15 +1,11 @@
 import styles from './Favorite.module.css';
 import Banner from '../../components/Banner';
 import Title from '../../components/Title';
-import Card from '../../components/Card/Card.index';
-import { useEffect, useState } from 'react';
+import Card from '../../components/Card';
+import useFavoriteContext from '../../hooks/useFavoriteContext';
 
-const Favorite = ({ videos = [], handleFavorite }) => {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    setFavorites(videos.filter((video) => video.favorite));
-  }, [videos]);
+const Favorite = () => {
+  const { favorite } = useFavoriteContext();
 
   return (
     <>
@@ -18,8 +14,8 @@ const Favorite = ({ videos = [], handleFavorite }) => {
         <h1>Meus Favoritos</h1>
       </Title>
       <section className={styles.cards}>
-        {favorites.map((video) => (
-          <Card key={video.id} {...video} handleFavorite={handleFavorite} />
+        {favorite.map((fav) => (
+          <Card key={fav?.id} {...fav} />
         ))}
       </section>
     </>

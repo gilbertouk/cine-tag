@@ -1,9 +1,10 @@
 import Banner from '../../components/Banner';
-import Card from '../../components/Card/Card.index';
+import Card from '../../components/Card';
 import Title from '../../components/Title';
 import styles from './Home.module.css';
+import videos from '../../json/db.json';
 
-const Home = ({ videos = [], handleFavorite }) => {
+const Home = () => {
   return (
     <>
       <Banner image={'home'} />
@@ -12,7 +13,7 @@ const Home = ({ videos = [], handleFavorite }) => {
       </Title>
       <section className={styles.cards}>
         {videos.map((video) => (
-          <Card {...video} key={video.id} handleFavorite={handleFavorite} />
+          <Card {...video} key={video.id} />
         ))}
       </section>
     </>
