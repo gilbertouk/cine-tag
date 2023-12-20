@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 import useFavoriteContext from '../../hooks/useFavoriteContext';
 import styles from './Card.module.css';
 import iconLike from './like.png';
@@ -11,7 +12,9 @@ const Card = ({ id, titulo, capa }) => {
 
   return (
     <figure className={styles.figure}>
-      <img src={capa} alt={titulo} className={styles.cover} />
+      <Link to={`/${id}`}>
+        <img src={capa} alt={titulo} className={styles.cover} />
+      </Link>
       <figcaption className={styles.footer}>
         <h2>{titulo}</h2>
         <button type="button" onClick={() => addFavorite({ id, capa, titulo })}>
