@@ -4,6 +4,7 @@ import Title from '../../components/Title';
 import { useParams } from 'react-router-dom';
 import videos from '../../json/db.json';
 import { useEffect, useState } from 'react';
+import NotFound from '../NotFound';
 
 const Player = () => {
   const params = useParams();
@@ -12,6 +13,10 @@ const Player = () => {
   useEffect(() => {
     setVideo(videos.find((video) => video.id === +params.id));
   }, [params]);
+
+  if (!video) {
+    return <NotFound />;
+  }
 
   return (
     <>
